@@ -53,7 +53,7 @@ func PostHandler(w http.ResponseWriter, r *http.Request) {
 	id := dba.CreateOrReplace(query)
 	query2 := fmt.Sprintf("SELECT * FROM %s WHERE id=%d", categoryName, id)
 	fmt.Println(query2)
-	cols, result := dba.Query(query2)
+	_, result := dba.Query(query2)
 	//fmt.Println(cols)
 	//fmt.Println(result)
 	//jsonRet := JsonResult(cols, result)
@@ -81,7 +81,7 @@ func GetHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	query += queryAdd
 	//fmt.Println(query)
-	cols, result := dba.Query(query)
+	_, result := dba.Query(query)
 	//fmt.Println(cols)
 	//fmt.Println(result)
 	//jsonRet := JsonResult(cols, result)
@@ -109,7 +109,7 @@ func PutHandler(w http.ResponseWriter, r *http.Request) {
 	//fmt.Println(query)
 	query2 := fmt.Sprintf("SELECT * FROM %s WHERE id=%s", categoryName, id)
 	fmt.Println(query2)
-	cols, result := dba.Query(query2)
+	_, result := dba.Query(query2)
 	//fmt.Println(cols)
 	//fmt.Println(result)
 	//jsonRet := JsonResult(cols, result)
