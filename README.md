@@ -1,14 +1,15 @@
-### gorest说明
+## gorest说明
 
-## 设计功能
+### 设计功能
 
 > * 使用Golang把PostgreSQL的CRUD接口封装为RESTful服务
 > * gorest.conf中加载配置（可以同步修改？）
 > * 在配置文件中配置数据库服务、跨域调用以及其他（支持多数据库？）
 > * 使用json格式输入输出（也可支持多种方式？）
 > * 可以做到可配置路由？
+> * 可否使用json对象来进行orm操作？
 
-## json格式
+### json格式
 
 ``` javascript
 [
@@ -18,7 +19,7 @@
 
 参考：https://github.com/emicklei/mora (完全没参考)
 
-## 完成度
+### 完成度
 
 > * 完成了postgresql和mysql的接入
 > * 完成了GET/POST/PUT/DELETE四个动词对单个表的操作

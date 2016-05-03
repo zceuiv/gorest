@@ -18,7 +18,7 @@ func Option() *godbc.Options {
 	return __DbOpt
 }
 
-func Query(query string) (cols []string, result [][]string) {
+func Query(query string) (cols []string, result []map[string]*string) {
 	db, err := sql.Open(godbc.SqlName(Option()), godbc.ConnStr(Option()))
 	defer db.Close()
 	rows, err := db.Query(query)
@@ -34,11 +34,13 @@ func Query(query string) (cols []string, result [][]string) {
 
 	for rows.Next() {
 		valueRow := make([]string, len(cols))
+		retRow := make(map[string]*string)
 		for i := 0; i < len(cols); i++ {
 			valuePointRow[i] = &valueRow[i]
+			retRow[cols[i]] = &valueRow[i]
 		}
 		rows.Scan(valuePointRow...)
-		result = append(result, valueRow)
+		result = append(result, retRow)
 	}
 
 	return cols, result

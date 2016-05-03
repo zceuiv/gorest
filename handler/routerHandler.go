@@ -56,8 +56,10 @@ func PostHandler(w http.ResponseWriter, r *http.Request) {
 	cols, result := dba.Query(query2)
 	//fmt.Println(cols)
 	//fmt.Println(result)
-	jsonRet := JsonResult(cols, result)
-	w.Write(jsonRet)
+	//jsonRet := JsonResult(cols, result)
+	v, _ := json.Marshal(result)
+	//w.Write(jsonRet)
+	w.Write(v)
 	w.Write([]byte("\n"))
 }
 
@@ -82,8 +84,10 @@ func GetHandler(w http.ResponseWriter, r *http.Request) {
 	cols, result := dba.Query(query)
 	//fmt.Println(cols)
 	//fmt.Println(result)
-	jsonRet := JsonResult(cols, result)
-	w.Write(jsonRet)
+	//jsonRet := JsonResult(cols, result)
+	v, _ := json.Marshal(result)
+	//w.Write(jsonRet)
+	w.Write(v)
 	w.Write([]byte("\n"))
 }
 
@@ -108,8 +112,10 @@ func PutHandler(w http.ResponseWriter, r *http.Request) {
 	cols, result := dba.Query(query2)
 	//fmt.Println(cols)
 	//fmt.Println(result)
-	jsonRet := JsonResult(cols, result)
-	w.Write(jsonRet)
+	//jsonRet := JsonResult(cols, result)
+	v, _ := json.Marshal(result)
+	//w.Write(jsonRet)
+	w.Write(v)
 	w.Write([]byte("\n"))
 }
 
@@ -123,6 +129,7 @@ func DeleteHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("OK\n"))
 }
 
+/*
 func JsonResult(cols []string, result [][]string) (ret []byte) {
 	cats := make([]CategoryObj, 0)
 	for i := 0; i < len(result); i++ {
@@ -137,3 +144,4 @@ func JsonResult(cols []string, result [][]string) (ret []byte) {
 	ret, _ = json.Marshal(cats)
 	return ret
 }
+*/
